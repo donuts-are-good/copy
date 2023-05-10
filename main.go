@@ -25,8 +25,15 @@ func main() {
 	flag.BoolVar(&recursive, "r", false, "copy directories recursively")
 	flag.Parse()
 
-	if flag.NArg() != 2 {
-		fmt.Println("Usage: ./copy -r /path/to/source /path/to/destination")
+	if flag.NArg() < 2 {
+		fmt.Println("Error: Too few arguments.")
+		fmt.Println("Usage: copy -r /path/to/source /path/to/destination")
+		os.Exit(1)
+	}
+
+	if flag.NArg() > 2 {
+		fmt.Println("Error: Too many arguments.")
+		fmt.Println("Usage: copy -r /path/to/source /path/to/destination")
 		os.Exit(1)
 	}
 
